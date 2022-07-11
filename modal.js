@@ -39,6 +39,7 @@ const quantity = document.querySelector("#quantity");
 const locations = document.getElementsByName('location');
 //const radio = document.querySelectorAll('input[name=location]:checked');
 const conditions = document.querySelector("#checkbox1");
+const notification = document.querySelector("#checkbox2");
 
 let firstNameError = document.querySelector("#firstErr");
 let lastNameError = document.querySelector("#lastErr");
@@ -63,7 +64,7 @@ let dateReg = /^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0
 const form = document.querySelector("#form");
 
 form.addEventListener("submit", function (e) {
-
+  e.preventDefault();
   if (firstName.value.match(nameReg) && firstName.value.length >1) {
 		firstNameError.innerText = "";
     firstNameIsValid = true;
@@ -130,15 +131,14 @@ form.addEventListener("submit", function (e) {
     conditionsError.innerText = "Veuillez accepter les conditions";
     firstNameIsValid = false;
   }
-
   if (firstNameIsValid && lastNameIsValid && emailIsValid && dateIsValid && quantityIsValid && locationIsValid && conditionsIsValid){
-    e.preventDefault();
     firstName.value = "";
     lastName.value = "";
     email.value = "";
     date.value = "jj/mm/aaaa";
     quantity.value = "";
     conditions.checked = false;
+    notification.checked = false;
     i=0
     for (let radioButton of locations) {
       i=i+1;
@@ -150,9 +150,6 @@ form.addEventListener("submit", function (e) {
     //form.reset();
     modalBody.style.display = "none";
     inscriptioReussie.style.display = "block";
-  } else {
-    e.preventDefault();
   }
-
 });
 
