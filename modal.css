@@ -28,6 +28,7 @@ p {
 
 img {
   padding-right: 1rem;
+  object-fit: cover;
 }
 
 .topnav {
@@ -89,8 +90,6 @@ img {
     text-align: left;
   }
 }
-
-
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
@@ -560,4 +559,11 @@ footer {
   cursor: pointer;
   border: 0;
   margin-bottom: 30px;
+}
+
+@media screen and (min-width: 800px) and (max-width: 950px) {
+  .hero-headline {
+    font-size: 4.5rem;
+    margin: auto;
+  }
 }
